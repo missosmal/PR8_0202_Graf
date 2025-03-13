@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+            Title="Погода Граф" Height="550" Width="900" MinHeight="450" MinWidth="800" MaxHeight="650" MaxWidth="948">
+
+    <Grid Background="Beige">
+        <Grid Height="65" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#87CEFA" Offset="0.0"/>
+                    <!-- Голубой -->
+                    <GradientStop Color="#9370DB" Offset="0.5"/>
+                    <!-- Сиреневый -->
+                    <GradientStop Color="#FF69B4" Offset="1.0"/>
+                    <!-- Розовый -->
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label Content="Прогнозы погоды" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontStyle="Italic" FontWeight="Bold" Foreground="Beige" FontFamily="Calibri"/>
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Width="125" Margin="0,65,0,0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#87CEFA" Offset="0.0"/>
+                    <GradientStop Color="#9370DB" Offset="0.5"/>
+                    <GradientStop Color="#FF69B4" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <Label Content="Введите город" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontStyle="Italic" FontWeight="Bold" Foreground="Beige" Margin="5,0,0,0" FontFamily="Calibri"/>
+
+        <TextBox x:Name="CityTextBox" Width="115" Height="25" Margin="5,284,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
+         FontSize="16" BorderBrush="White" BorderThickness="2" FontFamily="Calibri"/>
+
+        <Button Content="Обновить" Width="115" Height="25" Margin="5,314,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
+        Background="White" FontStyle="Italic" FontWeight="Bold" Foreground="Black" FontSize="14" BorderThickness="0" Cursor="Hand" Click="UpdateWeather_Click" FontFamily="Calibri"/>
+
+        <TextBlock x:Name="RequestCountTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" FontWeight="Bold" Foreground="White" Width="109" Margin="16,159,0,0" Height="150" FontFamily="Calibri">
+        <UIElement.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </UIElement.RenderTransform>
+        </TextBlock>
+
+        <DataGrid x:Name="WeatherDataGrid" AutoGenerateColumns="False" 
+          Margin="130,70,10,10" HeadersVisibility="Column" GridLinesVisibility="None" 
+          RowBackground="White" AlternatingRowBackground="#F0F0F0" BorderBrush="#DDD" BorderThickness="1" FontFamily="Calibri">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата и время" Binding="{Binding DateTime}" Width="120"/>
+                <DataGridTextColumn Header="Температура" Binding="{Binding Temperature}" Width="100"/>
+                <DataGridTextColumn Header="Давление" Binding="{Binding Pressure}" Width="100"/>
+                <DataGridTextColumn Header="Влажность" Binding="{Binding Humidity}" Width="100"/>
+                <DataGridTextColumn Header="Ветер" Binding="{Binding WindSpeed}" Width="100"/>
+                <DataGridTextColumn Header="Ощущается как" Binding="{Binding FeelsLike}" Width="120"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding WeatherDescription}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
